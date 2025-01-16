@@ -4,28 +4,39 @@ ReplicaSet: A ReplicaSet's purpose is to maintain a stable set of replica Pods r
 Create ReplicaSet Delete RS
 
 
-Deployments
+Deployment: A Deployment manages a set of Pods to run an application workload, usually one that doesn't maintain state.
+A Deployment provides declarative updates for Pods and ReplicaSets.
+
 Create deployment
 
 kubectl create deploy bootcamp --image nginx --replicas 3 --port 80
+
 kubectl rollout status deployment bootcamp
-Update image ```kubectl set image deploy bootcamp nginx=nginx:1.14.a --record```` See the rollout history
+
+Update image ```kubectl set image deploy bootcamp nginx=nginx:1.14.0 --record```` See the rollout history
+
+kubectl set image deploy bootcamp nginx=nginx:1.14.a --record
 
 kubectl rollout history deploy/bootcamp
+
 kubectl rollout history deploy/bootcamp --revision=2
-Rollback deployment when something foes wrong, you can also pause a rollout
+
+Rollback deployment when something goes wrong, you can also pause a rollout
 
 kubectl rollout undo deployment/bootcamp --to-revision=1
 Scale deployment, you can also do kubectl edit deployment
 
 kubectl scale deployment/bootcamp --replicas=6
+
 kubectl rollout pause deployment/bootcamp
+
 For Recreate strategy
 
 kubectl apply -f recreate.yaml
 Update the image
 
 kubectl set image deploy/demo-deployment demo=nginx:14.0
+
 You will all getting terminated and new ones getting created leading to little downtime.
 
 Canary Deployment - Usually its done with Gateway API, service mesh etc but with deployment you can simulate like below:
