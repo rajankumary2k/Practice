@@ -15,6 +15,8 @@ kubectl rollout status deployment bootcamp
 
 Update image ```kubectl set image deploy bootcamp nginx=nginx:1.14.0 --record```` See the rollout history
 
+kubectl rollout history deploy/bootcamp
+
 kubectl set image deploy bootcamp nginx=nginx:1.14.a --record
 
 kubectl rollout history deploy/bootcamp
