@@ -9,7 +9,7 @@ A Deployment provides declarative updates for Pods and ReplicaSets.
 
 Create deployment
 
-kubectl create deploy bootcamp --image nginx --replicas 3 --port 80
+kubectl create deploy bootcamp --image nginx --replicas 4 --port 80
 
 kubectl rollout status deployment bootcamp
 
