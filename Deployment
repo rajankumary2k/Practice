@@ -51,3 +51,9 @@ Check the endpoints for the service created and you will see all in the endpoint
 
 Probes
 Probes you can test by deploying probe.yaml and then deleting that, edit the yaml with port 8080 in the probe check and wait for sometime to see it fail.
+
+readiness: Check if the pod is ready to accept traffic. check dependencies for the pods in terms of availability of service or latency issue check. 
+
+startup: First this executes, until it's a success other probes are not executed.
+
+liveness: The kubelet uses liveness probes to know when to restart a container. 
