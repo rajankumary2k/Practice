@@ -9,28 +9,30 @@ A Deployment provides declarative updates for Pods and ReplicaSets.
 
 Create deployment
 
-kubectl create deploy bootcamp --image nginx --replicas 4 --port 80
+kubectl create deploy test-deployment --image nginx --replicas 4 --port 80
 
-kubectl rollout status deployment bootcamp
+kubectl rollout status deployment test-deployment
 
-Update image ```kubectl set image deploy bootcamp nginx=nginx:1.14.0 --record```` See the rollout history
+Update image ```kubectl set image deploy test-deployment nginx=nginx:1.14.0 --record```` See the rollout history
 
-kubectl rollout history deploy/bootcamp
+kubectl rollout status deploy/test-deployment
 
-kubectl set image deploy bootcamp nginx=nginx:1.14.a --record
+kubectl rollout history deploy/test-deployment
 
-kubectl rollout history deploy/bootcamp
+kubectl set image test-deployment bootcamp nginx=nginx:1.14.a --record
 
-kubectl rollout history deploy/bootcamp --revision=2
+kubectl rollout history deploy/test-deployment
+
+kubectl rollout history deploy/test-deployment --revision=2
 
 Rollback deployment when something goes wrong, you can also pause a rollout
 
-kubectl rollout undo deployment/bootcamp --to-revision=1
+kubectl rollout undo deployment/test-deployment --to-revision=1
 Scale deployment, you can also do kubectl edit deployment
 
-kubectl scale deployment/bootcamp --replicas=6
+kubectl scale deployment/test-deployment --replicas=6
 
-kubectl rollout pause deployment/bootcamp
+kubectl rollout pause deployment/test-deployment
 
 For Recreate strategy
 
@@ -39,7 +41,7 @@ Update the image
 
 kubectl set image deploy/demo-deployment demo=nginx:14.0
 
-You will all getting terminated and new ones getting created leading to little downtime.
+Your pod will all getting terminated and new ones getting created leading to little downtime.
 
 Canary Deployment - Usually its done with Gateway API, service mesh etc but with deployment you can simulate like below:
 
